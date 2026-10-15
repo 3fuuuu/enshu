@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="Shift_JIS" />
+    <title>簡単な JavaScript</title>
+    <style type="text/css">
+      body {
+        background-color: Lime;
+      }
+    </style>
+    <script language="JavaScript">
+      function button_click() {
+        document.js.box.value++;
+      }
+      function message() {
+        document.js1.mes.value = document.js1.department.value;
+        document.js1.mes.value += document.js1.grade.value + "年";
+        document.js1.mes.value += " 氏名 :" + document.js1.name.value;
+      }
+      function add() {
+        document.js2.a1.value = document.js2.v1.value + document.js2.v2.value;
+        var n1 = parseInt(document.js2.v1.value);
+        var n2 = parseInt(document.js2.v2.value);
+        document.js2.a2.value = n1 + n2;
+      }
+      function bgchange(color) {
+        document.body.style.backgroundColor = color;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="js">
+      <input type="text" name="box" />
+      <input
+        type="button"
+        name="click"
+        value="クリック"
+        onclick="button_click()"
+      />
+    </form>
+    <hr />
+    <form name="js1">
+      あなたの名前:<input type="text" name="name" /><br />
+      あなたの学科:<input
+        type="text"
+        name="department"
+        value="電子制御工学科"
+      /><br />
+      あなたの学年:<input type="text" name="grade" value="3" /><br />
+      <input
+        type="button"
+        name="click"
+        value="表示"
+        onclick="message()"
+      /><br />
+      <input type="text" name="mes" size="120" value="メッセージ欄" />
+    </form>
+    <hr />
+    <form name="js2">
+      <input type="text" name="v1" size="5" />
+      +
+      <input type="text" name="v2" size="5" />
+      =
+      <input type="text" name="a1" size="5" />
+      <input type="text" name="a2" size="5" />
+      <input type="button" name="click" value="計算" onclick="add()" /><br />
+    </form>
+    <hr />
+    <input type="button" value="背景:白" onclick="bgchange('#ffffff')" />
+    <input type="button" value="背景:ライム" onclick="bgchange('Lime')" />
+  </body>
+</html>
