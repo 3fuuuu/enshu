@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>抵抗の計算</title>
+    <style type="text/css">
+      body {
+        background-color: Lime;
+      }
+    </style>
+    <script language="JavaScript">
+      function add() {
+        var n1 = parseFloat(document.js2.r1.value) || 0;
+        var n2 = parseFloat(document.js2.r2.value) || 0;
+        var n3 = parseFloat(document.js2.r3.value) || 0;
+
+        document.js2.t.value = n1 + n2 + n3;
+
+        if (n1 > 0 && n2 > 0 && n3 > 0) {
+          var parallel = 1 / (1 / n1 + 1 / n2 + 1 / n3);
+          document.js2.h.value = parallel.toFixed(0);
+        } else {
+          document.js2.h.value = 0;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="js2">
+      R1[Ω]
+      <input
+        type="text"
+        name="r1"
+        size="5"
+        document.js2.h.value="parallel.toFixed(2);"
+      />
+      <br />
+      R2[Ω]
+      <input type="text" name="r2" size="5" />
+      <br />
+      R3[Ω]
+      <input type="text" name="r3" size="5" />
+      <br />
+      <input type="button" name="click" value="計算" onclick="add()" />
+      <br />
+      直列抵抗[Ω]
+      <input type="text" name="t" size="5" />
+      <br />
+      並列抵抗[Ω]
+      <input type="text" name="h" size="5" />
+    </form>
+    <hr />
+  </body>
+</html>
