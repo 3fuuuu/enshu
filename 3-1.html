@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>お試し canvas 5</title>
+    <style type="text/css">
+      canvas {
+        border: 2px solid black;
+      }
+    </style>
+
+    <script type="text/javascript">
+      var cxa;
+      var n;
+      var x = new Array();
+      var y = new Array();
+      var vx = new Array();
+      var vy = new Array();
+
+      function astart() {
+        var cx = document.getElementById("cv");
+        if (cx.getContext) {
+          cxa = cx.getContext("2d");
+          timer1 = setInterval(adraw, 30);
+        }
+        n = parseInt(document.js.nBall.value);
+        var min = 0;
+        var max = 400;
+        for (i = 0; i < n; i++) {
+          x[i] = Math.floor(Math.random() * (max + 1 - min) + min);
+          y[i] = Math.floor(Math.random() * (max + 1 - min) + min);
+          vx[i] = Math.random() > 0.5 ? -1 : 1;
+          vy[i] = Math.random() > 0.5 ? -1 : 1;
+        }
+      }
+
+      function adraw() {
+        cxa.fillStyle = "rgb(255, 255, 255)";
+        cxa.fillRect(0, 0, 400, 400);
+
+        for (i = 0; i < n; i++) {
+          cxa.beginPath();
+          cxa.fillStyle = "#3399FF";
+          cxa.arc(x[i], y[i], 10.0, 0, Math.PI * 2, false);
+          cxa.fill();
+          x[i] += vx[i];
+          if (x[i] < 0 || x[i] > 400) vx[i] = -vx[i];
+          y[i] += vy[i];
+          if (y[i] < 0 || y[i] > 400) vy[i] = -vy[i];
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <canvas id="cv" width="400" height="400"></canvas><br />
+    <form name="js">
+      ボールの数 : <input type="text" value="10" name="nBall" />
+      <input type="button" value="start" onclick="astart()" />
+    </form>
+  </body>
+</html>
