@@ -6,5 +6,5 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, "htdocs")));
 
 app.listen(port, () => {
-  console.log(`Start http Server: http://localhost:{port}`);
+  console.log(`Start http Server: http://localhost:${port}`);
 });
